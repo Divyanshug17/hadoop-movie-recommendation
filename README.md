@@ -5,7 +5,7 @@ This project leverages distributed storage and batch processing techniques to an
 
 ---
 
-# 🚀 Features
+# Features
 
 - 📂 Distributed movie dataset storage using HDFS
 - ⚡ Batch data processing with Hadoop MapReduce
@@ -17,7 +17,7 @@ This project leverages distributed storage and batch processing techniques to an
 
 ---
 
-# 🛠️ Technologies Used
+# Technologies Used
 
 | Technology | Purpose |
 |------------|---------|
@@ -29,7 +29,7 @@ This project leverages distributed storage and batch processing techniques to an
 
 ---
 
-# 🏗️ System Architecture
+# System Architecture
 
 ```text
 Movie Dataset
