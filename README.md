@@ -43,3 +43,71 @@ Movie Dataset
      Hive
       ↓
 Analytics & Recommendations
+
+# Functionalities
+🎯 Movie Recommendation
+Recommended movies based on genres and user preferences
+Processed large movie datasets efficiently using MapReduce
+📈 Popularity Analysis
+Analyzed movie ratings and popularity trends
+Identified highly rated and trending movies
+🎭 Actor & Movie Analytics
+Evaluated actor performance and movie collections
+Generated insights from large-scale datasets
+🧾 Hive Querying
+Created analytical Hive tables
+Performed SQL-style queries for insights and reporting
+
+SETUP & EXECUTION
+
+Clone Repository
+git clone https://github.com/Divyanshug17/hadoop-movie-recommendation.git
+cd hadoop-movie-recommendation
+
+Start Hadoop Services
+start-dfs.sh
+start-yarn.sh
+
+Create HDFS Directory
+hdfs dfs -mkdir /movies
+
+Upload Dataset to HDFS
+hdfs dfs -put dataset/movies.csv /movies
+
+Compile Java Files
+javac -classpath `hadoop classpath` -d . MovieMapper.java MovieReducer.java M
+
+Create JAR File
+jar -cvf MovieRecommendation.jar *
+
+Run MapReduce Job
+hadoop jar MovieRecommendation.jar MovieDriver /movies /output
+
+View Output
+hdfs dfs -cat /output/part-r-00000
+
+Open Hive
+hive
+
+Create Hive Table
+CREATE TABLE movies (
+    movieId INT,
+    title STRING,
+    genre STRING
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+STORED AS TEXTFILE;
+
+Load Data into Hive
+LOAD DATA INPATH '/movies/movies.csv'
+INTO TABLE movies;
+
+Run Sample Query
+SELECT genre, COUNT(*) AS total_movies
+FROM movies
+GROUP BY genre;
+
+Stop Hadoop Services
+stop-yarn.sh
+stop-dfs.sh
